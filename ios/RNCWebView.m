@@ -29,12 +29,12 @@ static NSDictionary* customCertificatesForHost;
     if (_webView == nil) {
         return nil;
     }
-
-    if ([_webView respondsToSelector:@selector(inputAssistantItem)]) {
-        UITextInputAssistantItem *inputAssistantItem = [_webView inputAssistantItem];
-        inputAssistantItem.leadingBarButtonGroups = @[];
-        inputAssistantItem.trailingBarButtonGroups = @[];
-    }
+// causing crash on IOS 11, with the hidekeyboardaccessoryview set to true
+//     if ([_webView respondsToSelector:@selector(inputAssistantItem)]) {
+//         UITextInputAssistantItem *inputAssistantItem = [_webView inputAssistantItem];
+//         inputAssistantItem.leadingBarButtonGroups = @[];
+//         inputAssistantItem.trailingBarButtonGroups = @[];
+//     }
     return nil;
 }
 @end
