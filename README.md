@@ -1,3 +1,7 @@
+# Temporary fix for iOS crashes on iOS devices that are < 13
+
+code block commented in the file ios/RNCWebView.m 32-37 lines
+
 # React Native WebView - a Modern, Cross-Platform WebView for React Native
 
 [![star this repo](http://githubbadges.com/star.svg?user=react-native-community&repo=react-native-webview&style=flat)](https://github.com/react-native-community/react-native-webview)
