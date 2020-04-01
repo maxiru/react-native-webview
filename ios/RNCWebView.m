@@ -136,8 +136,6 @@ static NSDictionary* customCertificatesForHost;
 
 - (void)didMoveToWindow
 {
-  [_webView.configuration.preferences setValue:@YES forKey:@"allowFileAccessFromFileURLs"];
-    
   if (self.window != nil && _webView == nil) {
     WKWebViewConfiguration *wkWebViewConfig = [WKWebViewConfiguration new];
     WKPreferences *prefs = [[WKPreferences alloc]init];
@@ -514,8 +512,8 @@ static NSDictionary* customCertificatesForHost;
         [_webView loadRequest:request];
     }
     else {
-        NSString *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-        [_webView loadFileURL:request.URL allowingReadAccessToURL:[NSURL fileURLWithPath:documentPath]];
+        NSURL* readAccessUrl = _allowingReadAccessToURL ? [RCTConvert NSURL:_allowingReadAccessToURL] : request.URL;
+        [_webView loadFileURL:request.URL allowingReadAccessToURL:readAccessUrl];
     }
 }
 
